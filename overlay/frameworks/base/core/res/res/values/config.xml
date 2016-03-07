@@ -31,7 +31,7 @@
     <bool name="config_animateScreenLights">false</bool>
 
     <!-- disable menu hard key on Crespo in non-pattern lockscreen -->
-    <bool name="config_disableMenuKeyInLockScreen">true</bool>
+    <!--<bool name="config_disableMenuKeyInLockScreen">true</bool>-->
 
     <!-- Array of light sensor LUX values to define our levels for auto backlight brightness support.
          The N entries of this array define N + 1 zones as follows:
@@ -191,7 +191,7 @@
 
     <!-- Timeout in MS for how long you have to long-press the back key to
          kill the foreground app. -->
-    <integer name="config_backKillTimeout">1500</integer>
+    <!--<integer name="config_backKillTimeout">1500</integer>-->
 
     <!-- Boolean to enable stk functionality on Samsung phones -->
     <bool name="config_samsung_stk">true</bool>
@@ -215,7 +215,7 @@
     <bool name="config_enableLockScreenTranslucentDecor">true</bool>
 
     <!-- Whether to enable auto provisioning the app for new SIM card on boot.-->
-    <bool name="config_auto_provision_enable">true</bool>
+    <!--<bool name="config_auto_provision_enable">true</bool>-->
 	<!-- SD card is hot-pluggable on this platform -->
     <bool name="config_batterySdCardAccessibility">true</bool>
 </resources>
