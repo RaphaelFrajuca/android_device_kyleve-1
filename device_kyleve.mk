@@ -27,11 +27,6 @@ PRODUCT_COPY_FILES += \
 	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:system/etc/media_codecs_google_video_le.xml \
  	device/samsung/kyleve/configs/media_codecs.xml:system/etc/media_codecs.xml 
-
-PRODUCT_PACKAGES += \
-               bcm_headset.kl \
-               bcm_keypad_v2.kl \
-               samsung-keypad.kl \
 # Charger
 PRODUCT_PACKAGES += \
 	charger_res_images
@@ -110,7 +105,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	cm.updater.uri=http://updates.cm-ota.pp.ua \
 	ro.telephony.call_ring.multiple=0 \
 	camera2.portability.force_api=1 \
-	ro.telephony.call_ring=0
+	ro.telephony.call_ring=0 \
+        debug.db.uid=100000
 
 # MTP
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
@@ -118,7 +114,6 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 # Dalvik heap config
 include frameworks/native/build/phone-hdpi-512-dalvik-heap.mk
-include frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk
 
 $(call inherit-product, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)

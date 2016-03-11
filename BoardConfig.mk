@@ -76,6 +76,15 @@ BOARD_EGL_WORKAROUND_BUG_10194508 := true
 TARGET_USES_ION := true
 HWUI_COMPILE_FOR_PERF := true
 COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS -DHAWAII_HWC -DADD_LEGACY_ACQUIRE_BUFFER_SYMBOL
+TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK :=true
+
+# Enable dex-preoptimization to speed up the first boot sequence
+# of an SDK AVD. Note that this operation only works on Linux for now
+ifeq ($(HOST_OS),linux)
+  ifeq ($(WITH_DEXPREOPT),)
+    WITH_DEXPREOPT := true
+  endif
+endif
 
 # Include an expanded selection of fonts
 EXTENDED_FONT_FOOTPRINT := true
