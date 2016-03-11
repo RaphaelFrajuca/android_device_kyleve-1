@@ -61,6 +61,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.ksm.default=1	
 	
+# Prebuilt kl keymaps
+PRODUCT_COPY_FILES += \
+	device/samsung/kylevess/keylayouts/bcm_headset.kl:system/usr/keylayout/bcm_headset.kl \
+	device/samsung/kylevess/keylayouts/bcm_keypad_v2.kl:system/usr/keylayout/bcm_keypad_v2.kl \
+	device/samsung/kylevess/keylayouts/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
+	device/samsung/kylevess/keylayouts/samsung-keypad.kl:system/usr/keylayout/samsung-keypad.kl
+
 # Wi-Fi
 PRODUCT_PACKAGES += \
 	dhcpcd.conf \
