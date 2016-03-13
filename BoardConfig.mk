@@ -74,7 +74,7 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE		:= 2638217216
 BOARD_FLASH_BLOCK_SIZE				:= 262144
 TARGET_RECOVERY_FSTAB				:= device/samsung/kyleve/ramdisk/fstab.hawaii_ss_kyleve
 TARGET_RECOVERY_PIXEL_FORMAT			:= "BGRA_8888"
-BOARD_CUSTOM_RECOVERY_KEYMAPPING		:= ../../device/samsung/bcm21553-common/recovery/recovery_ui.c
+BOARD_CUSTOM_RECOVERY_KEYMAPPING		:= device/samsung/kyleve/recovery/recovery_ui.c
 
 #kernel
 BOARD_KERNEL_BASE := 0x82000000
