@@ -1,7 +1,7 @@
 # mount     	fstype  device                  [device2]   	[fstype2]   	[fsoptions]	[fsoptions2]
 
-/boot		bml     /dev/block/mmcblk0p5
-/recovery	bml	/dev/block/mmcblk0p6	NULL		NULL		NULL		NULL
+/boot		emmc     /dev/block/mmcblk0p5
+/recovery	emmc	/dev/block/mmcblk0p6	NULL		NULL		NULL		NULL
 /cache		ext4    /dev/block/mmcblk0p16	NULL        	rfs         	NULL		rw,nosuid,nodev,check=no
 /data		ext4    /dev/block/mmcblk0p19	NULL        	rfs         	NULL		rw,nosuid,nodev,check=no
 /sdcard		vfat    /devices/platform/sdhci.0/mmc_host/mmc2

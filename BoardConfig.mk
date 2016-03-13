@@ -1,24 +1,9 @@
-#
-# Copyright (C) 2009 The Android Open Source Project
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-# http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
-# BoardConfig.mk
-#
-# Product-specific compile-time definitions.
-#
-
 LOCAL_PATH:= $(call my-dir)
+
+USE_CAMERA_STUB := true
+
+# inherit from the proprietary version
+-include vendor/samsung/kyleve/BoardConfigVendor.mk
 
 # Platform
 TARGET_ARCH := arm
@@ -67,10 +52,16 @@ ifeq ($(HOST_OS),linux)
 endif
 
 # Charger
-#BOARD_CHARGER_ENABLE_SUSPEND := true
-#BOARD_ALLOW_SUSPEND_IN_CHARGER := true
+BOARD_BATTERY_DEVICE_NAME := battery
+BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
-#BOARD_BATTERY_DEVICE_NAME := "battery"
+CHARGING_ENABLED_PATH := "/sys/class/power_supply/battery/batt_lp_charging"
+BACKLIGHT_PATH := "/sys/class/backlight/panel/brightness"
+
+# GPU Stuff
+BOARD_EGL_CFG					:= device/samsug/kyleve/configs/egl.cfg
+USE_OPENGL_RENDERER				:= true
+COMMON_GLOBAL_CFLAGS				+= -DMISSING_EGL_PIXEL_FORMAT_YV12 -DFORCE_EGL_CONFIG=0x2
 
 # Recovery
 TARGET_USERIMAGES_USE_EXT4			:= true
@@ -81,8 +72,9 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE		:= 8388608
 BOARD_SYSTEMIMAGE_PARTITION_SIZE		:= 907096000
 BOARD_USERDATAIMAGE_PARTITION_SIZE		:= 2638217216
 BOARD_FLASH_BLOCK_SIZE				:= 262144
-BOARD_LDPI_RECOVERY				:= true
 TARGET_RECOVERY_FSTAB				:= device/samsung/kyleve/ramdisk/fstab.hawaii_ss_kyleve
+TARGET_RECOVERY_PIXEL_FORMAT			:= "BGRA_8888"
+BOARD_CUSTOM_RECOVERY_KEYMAPPING		:= ../../device/samsung/bcm21553-common/recovery/recovery_ui.c
 
 #kernel
 BOARD_KERNEL_BASE := 0x82000000
