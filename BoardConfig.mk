@@ -1,5 +1,3 @@
-LOCAL_PATH:= $(call my-dir)
-
 USE_CAMERA_STUB := true
 
 # inherit from the proprietary version
@@ -42,6 +40,8 @@ TARGET_SCREEN_WIDTH := 480
 DEVICE_RESOLUTION := 480x800
 BACKLIGHT_PATH := "/sys/class/backlight/panel/brightness"
 
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+
 
 # Enable dex-preoptimization to speed up the first boot sequence
 # of an SDK AVD. Note that this operation only works on Linux for now
@@ -59,11 +59,10 @@ CHARGING_ENABLED_PATH := "/sys/class/power_supply/battery/batt_lp_charging"
 BACKLIGHT_PATH := "/sys/class/backlight/panel/brightness"
 
 # GPU Stuff
-BOARD_EGL_CFG					:= device/samsug/kyleve/configs/egl.cfg
 USE_OPENGL_RENDERER				:= true
 COMMON_GLOBAL_CFLAGS				+= -DMISSING_EGL_PIXEL_FORMAT_YV12 -DFORCE_EGL_CONFIG=0x2
 
-# Recovery
+# Partition
 TARGET_USERIMAGES_USE_EXT4			:= true
 BOARD_RECOVERY_HANDLES_MOUNT			:= true
 BOARD_HAS_DOWNLOAD_MODE				:= true
@@ -72,9 +71,12 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE		:= 8388608
 BOARD_SYSTEMIMAGE_PARTITION_SIZE		:= 907096000
 BOARD_USERDATAIMAGE_PARTITION_SIZE		:= 2638217216
 BOARD_FLASH_BLOCK_SIZE				:= 262144
+
+#recovery
 TARGET_RECOVERY_FSTAB				:= device/samsung/kyleve/ramdisk/fstab.hawaii_ss_kyleve
 TARGET_RECOVERY_PIXEL_FORMAT			:= "BGRA_8888"
-BOARD_CUSTOM_RECOVERY_KEYMAPPING		:= device/samsung/kyleve/recovery/recovery_ui.c
+BOARD_CUSTOM_RECOVERY_KEYMAPPING		:= ../../device/samsung/kyleve/recovery/recovery_ui.c
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/android0/f_mass_storage/lun%d/file"
 
 #kernel
 BOARD_KERNEL_BASE := 0x82000000
