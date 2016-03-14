@@ -67,6 +67,26 @@ PRODUCT_PACKAGES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
 
+# These are the hardware-specific settings that are stored in system properties.
+# Note that the only such settings should be the ones that are too low-level to
+# be reachable from resources or other mechanisms.
+PRODUCT_PROPERTY_OVERRIDES += \
+    wifi.interface=wlan0 \
+    mobiledata.interfaces=rmnet0 \
+    ro.telephony.ril_class=SamsungBCMRIL \
+    ro.zygote.disable_gl_preload=true \
+    persist.radio.multisim.config=dsds \
+    ro.telephony.call_ring.multiple=0 \
+    ro.telephony.call_ring=0
+
+# Extended JNI checks
+# The extended JNI checks will cause the system to run more slowly, but they can spot a variety of nasty bugs 
+# before they have a chance to cause problems.
+# Default=true for development builds, set by android buildsystem.
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.kernel.android.checkjni=0 \
+    dalvik.vm.checkjni=false
+
 # Dalvik heap config
 include frameworks/base/build/phone-hdpi-512-dalvik-heap.mk
 
