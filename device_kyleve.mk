@@ -87,6 +87,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.kernel.android.checkjni=0 \
     dalvik.vm.checkjni=false
 
+PRODUCT_COPY_FILES += \
+	device/samsung/kyleve/configs/etc/dbus.conf:system/etc/dbus.conf \
+	device/samsung/kyleve/configs/etc/mountd.conf:system/etc/mountd.conf \
+	device/samsung/kyleve/configs/etc/somxreg.conf:system/etc/somxreg.conf \
+	device/samsung/kyleve/configs/etc/tinyucm.conf:system/etc/tinyucm.conf \
+	device/samsung/kyleve/configs/etc/vold.fstab:system/etc/vold.fstab \
+
 # Dalvik heap config
 include frameworks/base/build/phone-hdpi-512-dalvik-heap.mk
 

@@ -15,6 +15,12 @@ TARGET_CPU_SMP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_BOOTLOADER_BOARD_NAME := hawaii
 
+# Bluetooth
+BOARD_HAVE_BLUETOOTH := true
+BOARD_HAVE_BLUETOOTH_BCM := true
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/samsung/kyleve/bluetooth
+BOARD_BLUEDROID_VENDOR_CONF := device/samsung/kyleve/bluetooth/libbt_vndcfg_S7392.txt
+
 # Connectivity - Wi-Fi
 BOARD_HAVE_SAMSUNG_WIFI     := true
 WPA_BUILD_SUPPLICANT 	    := true
@@ -60,7 +66,7 @@ BACKLIGHT_PATH := "/sys/class/backlight/panel/brightness"
 
 # GPU Stuff
 USE_OPENGL_RENDERER				:= true
-COMMON_GLOBAL_CFLAGS				+= -DMISSING_EGL_PIXEL_FORMAT_YV12 -DFORCE_EGL_CONFIG=0x2
+COMMON_GLOBAL_CFLAGS				+= -DNEEDS_VECTORIMPL_SYMBOLS -DHAWAII_HWC
 
 # Partition
 TARGET_USERIMAGES_USE_EXT4			:= true
